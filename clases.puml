@@ -1,0 +1,32 @@
+@startuml
+
+class Materia {
+    - nombre: String
+    - correlativas: List<Materia>
+
+    + getCorrelativas(): List<Materia>
+    + agregarCorrelativa(Materia materia): void
+}
+
+class Alumno {
+    - nombre: String
+    - materiasAprobadas: List<Materia>
+
+    + getMateriasAprobadas(): List<Materia>
+    + agregarMateriaAprobada(Materia materia): void
+}
+
+class Inscripcion {
+    - alumno: Alumno
+    - asignaturas: List<Materia>
+    - estaAprobada: boolean
+
+    + aprobada(): boolean
+}
+
+Materia "*" <-- Materia
+Materia "*" <-- Alumno
+Materia "*" <-- Inscripcion
+Inscripcion o-- Alumno
+
+@enduml
